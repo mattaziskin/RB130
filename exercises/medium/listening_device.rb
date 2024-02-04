@@ -1,4 +1,6 @@
 class Device
+  attr_accessor :recordings
+
   def initialize
     @recordings = []
   end
@@ -12,11 +14,12 @@ class Device
   end
 
   def play
-    puts @recordings.last
+    puts recordings.last
   end
 end
+
 
 listener = Device.new
 listener.listen { "Hello World!" }
 listener.listen
-p listener.play # Outputs "Hello World!"
+listener.play # Outputs "Hello World!"

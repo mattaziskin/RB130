@@ -1,7 +1,7 @@
 class TextAnalyzer
   def process
     file = File.open('text.txt', 'r')
-    yield(file.read)
+    yield(file.read) if block_given?
     file.close
   end
 end

@@ -5,14 +5,14 @@ def bubble_sort!(array)
     swapped = false
     1.upto(array.size - 1) do |index|
       if block_given?
-        next if yield(array[index - 1], array[index])
+        next if yield(array[index - 1], *array[index])
       else
         next if array[index - 1] <= array[index]
       end
-
       array[index - 1], array[index] = array[index], array[index - 1]
       swapped = true
     end
+
     break unless swapped
   end
 end
@@ -39,4 +39,9 @@ p array == %w(Kim Pete Tyler alice bonnie rachel sue)
 
 array = %w(sue Pete alice Tyler rachel Kim bonnie)
 bubble_sort!(array) { |first, second| first.downcase <= second.downcase }
+p array == %w(alice bonnie Kim Pete rachel sue Tyler)
+
+array = %w(sue Pete alice Tyler rachel Kim bonnie)
+bubble_sort!(array) { |value| value.downcase }
+p array
 p array == %w(alice bonnie Kim Pete rachel sue Tyler)

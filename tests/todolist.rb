@@ -114,7 +114,7 @@ class TodoList
 
   def each
     @todos.each do |todo|
-      yield(todo)
+      yield(todo) if block_given?
     end
     self
   end
